@@ -20,4 +20,12 @@ class Database {
         $statment->execute($params);
         return $statment;
     }
+    
+    //select
+    public function select($tableName) 
+    {
+        $statment = $this->connection->prepare("SELECT * FROM $tableName");
+        $statment->execute();
+        return $statment;
+    }
 }

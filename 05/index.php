@@ -11,12 +11,12 @@ $config = [
 require 'Database.php';
 
 $text = $_POST['text'] ?? NULL;
-$autor = $_POST['autor'] ?? NULL;
-
+$author = $_POST['author'] ?? NULL;
+$tableName = 'comments';
 try 
     {
         $db = new Database($config['database']);
-        $posts = $db->query('select * from blog')->fetchAll();
+        $posts = $db->select($tableName)->fetchAll();
     }
 catch(PDOException $e)
     {
@@ -31,16 +31,16 @@ function decodeBBCode($content) {
 
 function display($posts) {
     foreach ($posts as $post) {
-        echo decodeBBCode($post['autor']). " " . decodeBBCode($post['blog']) . "<br>";
+        echo decodeBBCode($post['author']). " " . decodeBBCode($post['comments']) . "<br>";
     };
 }
 
 require 'index.view.php';
 
 // insert inputs into db
-if(!empty($text) && !empty($autor)) {
-    $sql = "INSERT INTO blog (autor, blog) VALUES (:autor, :text)";
-    $params = [':autor' => $autor, ':text' => $text];
+if(!empty($text) && !empty($author)) {
+    $sql = "INSERT INTO comments (author, comments) VALUES (:author, :text)";
+    $params = [':author' => $author, ':text' => $text];
     $post = $db->query($sql, $params);
     header("Location: /");
     exit();

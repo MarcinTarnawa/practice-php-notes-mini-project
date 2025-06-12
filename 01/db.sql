@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Maj 31, 2025 at 08:35 AM
+-- Generation Time: Cze 12, 2025 at 02:04 PM
 -- Wersja serwera: 8.0.42
 -- Wersja PHP: 8.3.20
 
@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 CREATE TABLE `blog` (
   `id` int NOT NULL,
   `blog` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
-  `autor` int NOT NULL
+  `user_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Zrzut danych tabeli `blog`
 --
 
-INSERT INTO `blog` (`id`, `blog`, `autor`) VALUES
+INSERT INTO `blog` (`id`, `blog`, `user_id`) VALUES
 (1, 'Exploring the Tatra Mountains: A Summer Journey', 1),
 (2, 'My Top 5 Must-Read Books for Personal Growth', 2),
 (3, 'The Art of Brewing Your Own Craft Beer at Home', 1),
@@ -78,14 +78,14 @@ INSERT INTO `blog_categories` (`blog_id`, `category_id`) VALUES
 
 CREATE TABLE `categories` (
   `id` int NOT NULL,
-  `categories` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL
+  `name` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Zrzut danych tabeli `categories`
 --
 
-INSERT INTO `categories` (`id`, `categories`) VALUES
+INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'journey'),
 (2, 'hobby'),
 (3, 'books'),
@@ -122,7 +122,7 @@ INSERT INTO `users` (`id`, `name`) VALUES
 --
 ALTER TABLE `blog`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `autor` (`autor`) USING BTREE;
+  ADD KEY `autor` (`user_id`) USING BTREE;
 
 --
 -- Indeksy dla tabeli `blog_categories`
@@ -173,7 +173,7 @@ ALTER TABLE `users`
 -- Ograniczenia dla tabeli `blog`
 --
 ALTER TABLE `blog`
-  ADD CONSTRAINT `blog_ibfk_1` FOREIGN KEY (`autor`) REFERENCES `users` (`id`);
+  ADD CONSTRAINT `blog_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ograniczenia dla tabeli `blog_categories`

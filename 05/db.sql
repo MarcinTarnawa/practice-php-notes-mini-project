@@ -24,20 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `blog`
+-- Struktura tabeli dla tabeli `comments`
 --
 
-CREATE TABLE `blog` (
+CREATE TABLE `comments` (
   `id` int NOT NULL,
-  `autor` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
-  `blog` text COLLATE utf8mb4_0900_as_cs NOT NULL
+  `author` varchar(40) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_as_cs NOT NULL,
+  `comments` text COLLATE utf8mb4_0900_as_cs NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_as_cs;
 
 --
--- Zrzut danych tabeli `blog`
+-- Zrzut danych tabeli `comments`
 --
 
-INSERT INTO `blog` (`id`, `autor`, `blog`) VALUES
+INSERT INTO `comments` (`id`, `author`, `comments`) VALUES
 (1, '[quote]marcin[/qoute]', '[b]pogrubiony tekst[/b]'),
 (2, '[quote]marcin[/quote]', 'teskt'),
 (3, 'marcin', 'teskt\"[b]teskt[/b]\"'),
@@ -56,9 +56,9 @@ INSERT INTO `blog` (`id`, `autor`, `blog`) VALUES
 --
 
 --
--- Indeksy dla tabeli `blog`
+-- Indeksy dla tabeli `comments`
 --
-ALTER TABLE `blog`
+ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -66,9 +66,9 @@ ALTER TABLE `blog`
 --
 
 --
--- AUTO_INCREMENT dla tabeli `blog`
+-- AUTO_INCREMENT dla tabeli `comments`
 --
-ALTER TABLE `blog`
+ALTER TABLE `comments`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 

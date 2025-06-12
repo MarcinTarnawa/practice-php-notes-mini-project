@@ -1,14 +1,23 @@
 <?php
-$servername = 'localhost';
-$dbname = 'posts';
-$username = 'root';
-$password = '';
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $conn->query("SELECT * FROM posts LIMIT $page, 10");
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch  (PDOException $e){
-    echo "Error: " . $e->getMessage();
+class Database {
+    
+    public $connection;
+
+    public function __construct($config, $username = 'root', $password = '')
+    {
+        $dsn = 'mysql:' . http_build_query($config,'',';');
+        $this->connection = new PDO($dsn, $username, $password, [
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]);
+    }
+
+    //select 10 records
+    public function select($tableName,$page) 
+    {
+        $page = $page*10-10;
+        $statment = $this->connection->prepare("SELECT * FROM $tableName LIMIT $page, 10");
+        $statment->execute();
+        return $statment;
+    }
 }

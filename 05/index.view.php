@@ -7,7 +7,7 @@
 </head>
 <body>
     <form action="/" method="post">
-        Autor: <input type="text" name="autor" value="[b]marcin[/b]" required>
+        Author: <input type="text" name="author" value="[b]marcin[/b]" required>
         Text: <input type="text" name="text" value="[quote]tekst[/quote]" required>
         <input type="submit" value="Add">
     </form>

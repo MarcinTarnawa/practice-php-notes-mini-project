@@ -7,9 +7,9 @@
 </head>
 <body>
     <form action ="posts" method="get">
-    <input type="number" name="page" min="1" value="<?= $_GET['page'] ?? 1?>">
-    <input type="submit" value="Go to page">
-</form>  
-       <?php display($results); ?> 
+        <input type="number" name="page" min="1" value="<?= $_GET['page'] ?? 1?>">
+        <input type="submit" value="Go to page">
+    </form>  
+       <?= $display; ?> 
 </body>
 </html>
